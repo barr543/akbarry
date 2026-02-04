@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_akbar.css') }}">
+    <title>Edit Nilai</title>
+</head>
+<body>
+    <div class="wadah_akbar">
+        <h2>Ubah Nilai ID: {{ n.id_nilai }}</h2>
+
+        <form method="POST">
+            <label>Nilai Tugas</label>
+            <input type="number" name="nilai_tugas" value="{{ n.nilai_tugas }}" required>
+
+            <label>Nilai UTS</label>
+            <input type="number" name="nilai_uts" value="{{ n.nilai_uts }}" required>
+
+            <label>Nilai UAS</label>
+            <input type="number" name="nilai_uas" value="{{ n.nilai_uas }}" required>
+
+            <label>Deskripsi</label>
+            <textarea name="deskripsi" required>{{ n.deskripsi }}</textarea>
+
+            <button type="submit" class="tombol_akbar ubah">Update Data</button>
+            <a href="/" style="display:block;text-align:center;margin-top:10px;">Batal</a>
+        </form>
+    </div>
+</body>
+</html>

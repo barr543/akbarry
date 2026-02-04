@@ -1,0 +1,157 @@
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #eef1ff;
+    padding: 30px;
+    color: #1f2937;
+}
+
+.wadah_akbar {
+    max-width: 1100px;
+    margin: auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(55, 48, 163, 0.18);
+    border: 1px solid rgba(55, 48, 163, 0.2);
+}
+
+.kepala_akbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #dcdfff;
+}
+
+.kepala_akbar h2 {
+    margin: 0;
+    background: linear-gradient(to right, #1e3a8a, #6d28d9);
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.tabel_akbar {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #dcdfff;
+}
+
+.tabel_akbar th {
+    background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    color: #ffffff;
+    padding: 16px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabel_akbar td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7ff;
+    font-size: 14px;
+}
+
+.tabel_akbar tr:last-child td {
+    border-bottom: none;
+}
+
+.tabel_akbar tr:hover {
+    background: rgba(67, 56, 202, 0.06);
+}
+
+.tombol_akbar {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.tambah {
+    background: linear-gradient(45deg, #1e40af, #2563eb);
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.ubah {
+    background: linear-gradient(45deg, #5b21b6, #7c3aed);
+    color: white;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.hapus {
+    background: linear-gradient(45deg, #be123c, #ef4444);
+    color: white;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.tombol_akbar:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+.tebal_akbar {
+    font-weight: bold;
+    color: #4338ca;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0 20px;
+    border-radius: 10px;
+    border: 2px solid #dcdfff;
+    background: #f8f9ff;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #6d28d9;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.2);
+}
+
+label {
+    font-weight: 700;
+    color: #312e81;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.aksi_grup {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cetak {
+    background: linear-gradient(45deg, #0f766e, #14b8a6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+}
+
+.form-filter{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-filter button{
+  margin-left: auto;  
+}
+
+
+

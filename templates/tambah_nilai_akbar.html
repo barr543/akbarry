@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_akbar.css') }}">
+    <title>Tambah Nilai - Rapot akbar</title>
+</head>
+<body>
+    <div class="wadah_akbar">
+        <h2>Input Nilai Baru</h2>
+
+        <form method="POST">
+            <label>Pilih Siswa</label>
+            <select name="nis" required>
+                {% for s in siswa %}
+                <option value="{{ s.nis }}">{{ s.nama }} ({{ s.nis }})</option>
+                {% endfor %}
+            </select>
+
+            <label>Pilih Mapel</label>
+            <select name="id_mapel" required>
+                {% for m in mapel %}
+                <option value="{{ m.id_mapel }}">{{ m.nama_mapel }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Semester</label>
+            <select name="semester" required>
+                <option value="1">Ganjil (1)</option>
+                <option value="2">Genap (2)</option>
+            </select>
+
+            <label>Tahun Ajaran</label>
+            <select name="tahun_ajaran" required>
+                <option value="2024/2025">2024/2025</option>
+                <option value="2025/2026">2025/2026</option>
+                <option value="2026/2027">2026/2027</option>
+            </select>
+
+            <label>Nilai Tugas</label>
+            <input type="number" name="nilai_tugas" required min="0" max="100">
+            <label>Nilai UTS</label>
+            <input type="number" name="nilai_uts" required min="0" max="100">
+            <label>Nilai UAS</label>
+            <input type="number" name="nilai_uas" required min="0" max="100">
+
+            <button type="submit" class="tombol_akbar tambah">Simpan Data</button>
+            <a href="/" style="display: block; text-align: center; margin-top: 10px; color: #666; text-decoration: none;">Batal</a>
+        </form>
+    </div>
+</body>
+</html>

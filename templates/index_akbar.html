@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_akbar.css') }}">
+    <title>Rapot Akbar - Data Nilai</title>
+</head>
+<body>
+    <div class="wadah_akbar">
+        <div class="kepala_akbar">
+            <h1>Data Nilai Siswa</h1>
+            <div class="navigasi_akbar">
+                <a href="/tambah_nilai_akbar" class="tombol_akbar tambah">+ Tambah Nilai</a>
+            </div>
+        </div>
+
+        <!-- FORM FILTER -->
+        <form method="GET" action="{{ url_for('halaman_utama_akbar') }}" style="margin-bottom: 20px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            
+            <label>Semester</label>
+            <select name="semester">
+                <option value="">-- Semua --</option>
+                <option value="1" {% if request.args.get('semester') == '1' %}selected{% endif %}>1</option>
+                <option value="2" {% if request.args.get('semester') == '2' %}selected{% endif %}>2</option>
+            </select>
+
+            <label>Tahun Ajaran</label>
+            <select name="tahun_ajaran">
+                <option value="">-- Semua Tahun Ajaran --</option>
+                {% for t in tahun_ajaran %}
+                <option value="{{ t.value }}"
+                    {% if request.args.get('tahun_ajaran') == t.value|string %}selected{% endif %}>
+                    {{ t.label }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="tombol_akbar">Cari</button>
+
+            <a href="{{ url_for('halaman_utama_akbar') }}" class="tombol_akbar hapus">Reset</a>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert_akbar alert-{{ category }}" style="padding: 15px; margin-bottom: 20px; border-radius: 5px; font-weight: bold; 
+                   {% if category == 'success' %} color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb;
+                   {% elif category == 'danger' %} color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb;
+                   {% else %} color: #004085; background-color: #cce5ff; border: 1px solid #b8daff; {% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <table class="tabel_akbar">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Siswa</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Semester</th>
+                    <th>Tahun Ajaran</th>
+                    <th>Tugas</th>
+                    <th>UTS</th>
+                    <th>UAS</th>
+                    <th>Nilai Akhir</th>
+                    <th>Deskripsi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for n in daftar_nilai_akbar %}
+                <tr>
+                    <td class="tebal_akbar">{{ n.id_nilai }}</td>
+                    <td>{{ n.nama }}</td>
+                    <td>{{ n.nama_mapel }}</td>
+                    <td style="text-align:center;">{{ n.semester }}</td>
+
+                    <td style="text-align:center;">{{ n.tahun_ajaran }}/{{ n.tahun_ajaran + 1 }}</td>
+
+                    <td style="text-align:center;">{{ n.nilai_tugas }}</td>
+                    <td style="text-align:center;">{{ n.nilai_uts }}</td>
+                    <td style="text-align:center;">{{ n.nilai_uas }}</td>
+                    <td class="tebal_akbar" style="text-align:center;">{{ n.nilai_akhir }}</td>
+                    <td>{{ n.deskripsi }}</td>
+                    <td>
+                        <div class="aksi_grup">
+                            <a href="/ubah_nilai_akbar/{{ n.id_nilai }}" class="tombol_akbar ubah">Edit</a>
+                            <a href="/hapus_nilai_akbar/{{ n.id_nilai }}" class="tombol_akbar hapus"
+                               onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+
+                            <a href="{{ url_for('generate_pdf_akbar', nis=n.nis) }}"
+                               target="_blank"
+                               class="tombol_akbar tambah">PDF</a>
+                        </div>
+                    </td>
+                </tr>
+
+                {% else %}
+                <tr>
+                    <td colspan="11" style="text-align:center; padding:20px;">Belum ada data nilai.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
